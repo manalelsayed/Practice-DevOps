@@ -1,11 +1,13 @@
- <h2># challenge2 </h2>
+ <h2># Practice-DevOps </h2>
+This repo contains my code solutions for infrastructure as a code part of the nanodegree 
 
 In this challenge I'm builing this infra-diagram
 
 <img src="awswebapp-2.jpeg">
 
  <h4>Template file: network.yml</h4>
--Contains deployment for the resources
+-Contains deployment for a VPC, with a pair of public and private subnets spread across two Availabilty Zones. It deploys an Internet Gateway, with a default 
+route on the public subnets. It deploys a pair of NAT Gateways (one in each AZ), and default routes for them in the private subnets.
 
  <h4> Parameters File: parametrs.json</h4> 
 - It contains the list of parameters that are being used in the current CloudFormation template
@@ -37,23 +39,3 @@ While running the AWS commands using either create.sh or update.sh file, if you 
 then you will have to grant the execute permission to the owner (yourself) explicitly as:<br>
 chmod +x update.sh 
 chmod +x create.sh 
-
-<h2>Steps</h2>
-<ol>
-<li>Creates a VPC<br>
-It will accept the IP Range -also known as CIDR block- from an input parameter</li>
-<li>Creates and attaches an Internet Gateway to the VPC</li>
-<li>Creates Two Subnets within the VPC with Name Tags to call them “Public” and “Private”<br>
-These will also need input parameters for their ranges, just like the VPC.</li>
-<li>The Subnet called “Public” needs to have a NAT Gateway deployed in it<br>
-This will require you to allocate an Elastic IP that you can then use to assign it to the NAT Gateway.</li>
-<li>The Public Subnet needs to have the MapPublicIpOnLaunch property set to true. Use this reference for help.</li>
-<li>The Private Subnet needs to have the MapPublicIpOnLaunch property set to false.</li>
-<li>Both subnets need to be /24 in size.<br>
-If you need assistance with IP math, you can use a subnet calculator such as this one.</li>
-<li>You will need 2 Routing Tables, one named Public and the other one Private</li>
-<li>Assign the Public and Private Subnets to their corresponding Routing table</li>
-<li>Create a Route in the Public Route Table to send default traffic ( 0.0.0.0/0 ) to the Internet Gateway you created</li>
-<li>Create a Route in the Private Route Table to send default traffic ( 0.0.0.0/0 ) to the NAT Gateway</li>
-<li>Finally, once you execute this CloudFormation script, you should be able to delete it and create it again, over and over in a predictable and repeatable manner, this is the true verification of working Infrastructure-as-Code</li>
-</ol>
