@@ -21,21 +21,21 @@ This file contains the create-stack command, which expects three command-line ar
 
 This file contains the update-stack command, and this too expects three command-line arguments.
 
-#Notes
--you must be in the origin speciefied in your create.sh file to see the cloudformation stacks
+<h3>Notes</h3>
+-you must be in the origin speciefied in your create.sh file to see the cloudformation stacks <br>
 
--To execute the Shell scripts write these commands in your bash cmd
+-To execute the Shell scripts write these commands in your bash cmd<br>
 
 ./create.sh {here write your stack name} {template file name} {parameters file name}
-ex: ./create.sh stackOne network.yml parameters.json
+<h4>ex: ./create.sh stackOne network.yml parameters.json</h4>
 
 <h5>or you can directly write them in create.sh file but we don't want to hard-code these values to make our code reusable</h5>
 
 The command above is equivalent of running the following:
-aws cloudformation create-stack --stack-name stackOne --template-body file://network.yml    --parameters file://parameters.json  --region=us-west-2
+<h4>aws cloudformation create-stack --stack-name stackOne --template-body file://network.yml  --parameters file://parameters.json  --region=us-west-2</h4>
 
--Troubleshoot
+<h3>Troubleshoot</h3>
 While running the AWS commands using either create.sh or update.sh file, if you face permission denied error,
-then you will have to grant the execute permission to the owner (yourself) explicitly as:
+then you will have to grant the execute permission to the owner (yourself) explicitly as:<br>
 chmod +x update.sh 
 chmod +x create.sh 
