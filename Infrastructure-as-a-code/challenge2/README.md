@@ -9,8 +9,11 @@ In this challenge I'm builing this infra-diagram
 -Contains deployment for a VPC, with a pair of public and private subnets spread across two Availabilty Zones. It deploys an Internet Gateway, with a default 
 route on the public subnets. It deploys a pair of NAT Gateways (one in each AZ), and default routes for them in the private subnets.
 
- <h4> Parameters File: parametrs.json</h4> 
+ <h4> Network Parameters File: parametrs.json</h4> 
 - It contains the list of parameters that are being used in the current CloudFormation template
+
+<h4> Servers.yml</h4>
+The servers.yml file defines various resources, such as security groups, an autoscaling group, launch configuration, target group, load balancer, and listener. Each type of resource has a different set of properties.
 
  <h4>create.sh</h4> 
 This file contains the create-stack command, which expects three command-line arguments
@@ -37,5 +40,5 @@ The command above is equivalent of running the following:
 <h3>Troubleshoot</h3>
 While running the AWS commands using either create.sh or update.sh file, if you face permission denied error,
 then you will have to grant the execute permission to the owner (yourself) explicitly as:<br>
-chmod +x update.sh 
+chmod +x update.sh <br>
 chmod +x create.sh 
